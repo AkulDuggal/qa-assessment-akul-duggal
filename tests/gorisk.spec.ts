@@ -1,8 +1,7 @@
-/* failed login case */
 import { test, expect } from '@playwright/test';
 
-test('login test with sign in', async ({ page }) => {
-  // Go to login page
+
+test('navigate and open gorisk page', async ({ page }) => {
   await page.goto('https://test1.gotrade.goquant.io/auth/login');
 
   // Locate the username input using XPath
@@ -15,7 +14,7 @@ test('login test with sign in', async ({ page }) => {
   const password = page.locator('input[name="password"]');
   await password.waitFor({ state: 'visible' });
   await password.click();
-  await password.fill('YourPassword123'); 
+  await password.fill('60Re3G9KvvFl4Ihegxpi'); 
 
   // Locate and click the Sign In button using XPath
   const signInButton = page.locator("(//button[normalize-space()='Sign In'])[1]");
@@ -24,5 +23,28 @@ test('login test with sign in', async ({ page }) => {
 
   // Wait for navigation / next page to load
   await page.waitForLoadState('networkidle'); // waits until network is idle
+
+  const dialogBox = page.locator('.text-green-400:first-child');
+  await dialogBox.waitFor({ state: 'visible' });
+  await dialogBox.click();
+
+  // Navigate to Admin page
+  const accountTab=page.locator('.flex.flex-row.gap-2 nav');
+  await accountTab.nth(2).waitFor({ state: 'visible' });
+  await accountTab.nth(2).click();
+
+  const adminTab=page.locator("//span[normalize-space()='GoRisk']");
+  await adminTab.waitFor({ state: 'visible' });
+  await adminTab.click();
+
+  //Risk tab
+  const riskTab=page.locator('.bg-background.inline-flex button');
+  await page.waitForTimeout(4000);
+
+  await riskTab.nth(1).click();
+
+  await page.waitForTimeout(4000);
+
+  
 
 });
