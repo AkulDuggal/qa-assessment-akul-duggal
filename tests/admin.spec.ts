@@ -69,6 +69,6 @@ test('navigate and open admin page', async ({ page }) => {
 
   await testButton.nth(1).click();
 
-  await page.waitForTimeout(10000);
+  //await page.waitForTimeout(20000);
 
 });

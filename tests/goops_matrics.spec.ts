@@ -37,13 +37,24 @@ test('navigate and open goops', async ({ page }) => {
   await postTrade.waitFor({ state: 'visible' });
   await postTrade.click();
   
-  //wallet page
-  // billing file generation
-  const billing = await page.locator('.flex.items-center.gap-2 .flex.flex-col');
-  await billing.click();
+  //metrics page
 
-  const optionsBilling = await page.locator('.relative.flex.cursor-default');
-  await optionsBilling.nth(0).click();
+  const optionsMetrics=page.locator('.w-full .h-8 .ring-offset-background');
+  await optionsMetrics.nth(1).click();
 
+  const timeFrame=page.locator('(//button)[26]');
+  await timeFrame.click();
+
+  const metricType=page.locator('.inline-flex.items-center .truncate ');
+  await metricType.nth(0).click();
+
+  const options=page.locator('.relative.cursor-default');
+  await options.nth(1).click();
+
+  // Reconciliation page
+
+  //await optionsMetrics.nth(2).click();
+
+  // Optional pause for observation
   await page.waitForTimeout(5000);
 });
