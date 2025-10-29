@@ -34,14 +34,27 @@ To run a specific test file:
 To open the HTML test report after execution:
 - npx playwright show-report
 
-Test Scope
+# Test Scope
 The current suite focuses on:
 - Validating key UI elements and navigational flows
 - Ensuring cross-browser compatibility
 - Verifying button actions, form submissions, and visual consistency
 - Detecting broken or inaccessible modules during runtime
 
-Future Enhancements
+# Reporting
+
+Upon completion, Playwright automatically generates a detailed HTML report located in the reports/ directory.
+The report includes:
+
+- Pass/fail status of each test
+- Execution time and duration
+
+To view the report, run the following command in your terminal:
+- npx playwright show-report
+
+This will open the interactive HTML report in your default web browser, allowing you to explore detailed results, screenshots, and traces for each test execution.
+
+# Future Enhancements
 
 - Add data-driven tests for multiple input scenarios
 - Integrate API-level validation for better coverage

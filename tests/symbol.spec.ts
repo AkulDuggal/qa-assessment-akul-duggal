@@ -42,6 +42,5 @@ test('symbol search', async ({ page }) => {
   await searchBox.fill('eth');
   await searchBox.press('Enter');
 
-  // Optional wait for results to load
   
 });
