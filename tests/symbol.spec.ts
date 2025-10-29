@@ -23,7 +23,7 @@ test('symbol search', async ({ page }) => {
   await signInButton.click();
 
   // Wait for navigation / next page to load
-  await page.waitForLoadState('networkidle'); // waits until network is idle
+  //await page.waitForLoadState('networkidle'); // waits until network is idle
 
   const dialogBox = page.locator('.text-green-400:first-child');
   await dialogBox.waitFor({ state: 'visible' });
@@ -43,5 +43,5 @@ test('symbol search', async ({ page }) => {
   await searchBox.press('Enter');
 
   // Optional wait for results to load
-  await page.waitForTimeout(3000);
+  
 });

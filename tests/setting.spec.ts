@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-
-test('navigate and open admin page', async ({ page }) => {
+test('setting page', async ({ page }) => {
   await page.goto('https://test1.gotrade.goquant.io/auth/login');
 
   // Locate the username input using XPath
@@ -22,53 +21,33 @@ test('navigate and open admin page', async ({ page }) => {
   await signInButton.click();
 
   // Wait for navigation / next page to load
-  //await page.waitForLoadState('domcontentloaded'); // waits until network is idle
+  //await page.waitForLoadState('networkidle'); 
 
+  // Click dialog box (first green item)
   const dialogBox = page.locator('.text-green-400:first-child');
   await dialogBox.waitFor({ state: 'visible' });
   await dialogBox.click();
 
-  // Navigate to Admin page
   const accountTab=page.locator('.flex.flex-row.gap-2 nav');
   await accountTab.nth(2).waitFor({ state: 'visible' });
   await accountTab.nth(2).click();
 
-  const adminTab=page.locator("//span[normalize-space()='Admin']");
+  const adminTab=page.locator("//span[normalize-space()='Settings']");
   await adminTab.waitFor({ state: 'visible' });
   await adminTab.click();
 
 
-  //groups tab
-  const groupTab=page.locator('.bg-background.inline-flex button');
-  await groupTab.nth(1).click();
-
-  await page.waitForTimeout(4000);
-
-  await groupTab.nth(0).click();
-
-  //adding account button
-  const button=page.locator("(//button[normalize-space()='Add Account'])[1]");
-  await button.waitFor({state: 'visible'});
-  await button.click();
-
-  // FORM FILLING
-
-  const keyInput=page.locator('.space-y-4 div input');
-  await keyInput.nth(0).fill('testaccount');
+  const option=page.locator("(//button[normalize-space()='Shortcuts'])[1]");
+  await option.waitFor({ state: 'visible' });
+  await option.click();
   
-  await keyInput.nth(1).click();
-  await keyInput.nth(1).fill("thisisatstkey");
-
-  await keyInput.nth(2).fill('thisisalsorandomkey');
   
-  await keyInput.nth(3).click();
-  await keyInput.nth(3).fill("thisisalsoatestkey");
+  const searchBar=page.locator('.relative.flex-1 input');
+  await searchBar.waitFor({ state: 'visible' });
+  await searchBar.click();
+  await searchBar.fill('GoTrade');
+  
 
-  const testButton=page.locator('.space-y-4 button');
-  await testButton.nth(0).click();
-
-  await testButton.nth(1).click();
-
-  //await page.waitForTimeout(20000);
+  await page.waitForTimeout(5000);
 
 });

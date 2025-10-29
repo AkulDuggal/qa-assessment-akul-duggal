@@ -21,7 +21,7 @@ test('navigate and open goops', async ({ page }) => {
   await signInButton.click();
 
   // Wait for navigation / next page to load
-  await page.waitForLoadState('networkidle'); // waits until network is idle
+  //await page.waitForLoadState('networkidle'); // waits until network is idle
 
   const dialogBox = page.locator('.text-green-400:first-child');
   await dialogBox.waitFor({ state: 'visible' });
@@ -50,10 +50,6 @@ test('navigate and open goops', async ({ page }) => {
 
   const options=page.locator('.relative.cursor-default');
   await options.nth(1).click();
-
-  // Reconciliation page
-
-  //await optionsMetrics.nth(2).click();
 
   // Optional pause for observation
   await page.waitForTimeout(5000);

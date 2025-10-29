@@ -26,7 +26,7 @@ test('trade flow test', async ({ page }) => {
   await signInButton.click();
 
   // Wait for navigation / next page to load
-  await page.waitForLoadState('networkidle'); // waits until network is idle
+  //await page.waitForLoadState('networkidle'); // waits until network is idle
 
 
   // Click dialog box (first green item)

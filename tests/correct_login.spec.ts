@@ -21,6 +21,6 @@ test('Correct login', async ({ page }) => {
   await signInButton.click();
 
   // Wait for navigation / next page to load
-  await page.waitForLoadState('networkidle'); 
+  await page.waitForLoadState('domcontentloaded'); 
 
 });
